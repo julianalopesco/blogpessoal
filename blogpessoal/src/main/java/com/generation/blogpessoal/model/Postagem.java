@@ -4,10 +4,13 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType; 
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -15,7 +18,7 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "tb_postagens")
 public class Postagem {
-	
+//atributos da model de postagem/campos da tabela de postagem	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -30,6 +33,12 @@ public class Postagem {
 	
 	@UpdateTimestamp
 	private LocalDateTime data;
+	
+	//criando relacionamentos
+	
+	@ManyToOne //mtas postagens para um tema
+	@JsonIgnoreProperties("postagem") //para desativar a recursividade, trazendo as infos apenas 1 vez
+	private Tema tema;
 
 	public Long getId() {
 		return id;
@@ -61,6 +70,14 @@ public class Postagem {
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 	
 	
