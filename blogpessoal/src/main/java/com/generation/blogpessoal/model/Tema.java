@@ -31,7 +31,7 @@ public class Tema {
 	//mapedBy = indicando o one da relação
 	//lazy = para carregar devagar e todas as infos do db
 	// remove = remover infos relacionadas ao deletar um perfil
-	@JsonIgnoreProperties("postagem")
+	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem; 
 	
 	
