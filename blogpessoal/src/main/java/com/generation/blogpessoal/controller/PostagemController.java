@@ -1,6 +1,5 @@
 package com.generation.blogpessoal.controller;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +35,7 @@ public class PostagemController {
 	
 	@Autowired 
 	private TemaRepository temaRepository;
+	
 	@GetMapping
 	public ResponseEntity<List<Postagem>> getAll(){
 		return ResponseEntity.ok(postagemRepository.findAll());
