@@ -62,7 +62,7 @@ public class UsuarioService {
 
 	public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin) {
         
-        // Gera o Objeto de autenticação
+        // Gera o Objeto de autenticação. gera o payload para o token
 		var credenciais = new UsernamePasswordAuthenticationToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha());
 		
         // Autentica o Usuario
